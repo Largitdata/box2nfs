@@ -11,7 +11,7 @@ RUN apk add --no-cache davfs2 bash nfs-utils && \
     echo "rpc_pipefs    /var/lib/nfs/rpc_pipefs rpc_pipefs      defaults        0       0" >> /etc/fstab && \
     echo "nfsd  /proc/fs/nfsd   nfsd    defaults        0       0" >> /etc/fstab && \
     echo "https://dav.box.com/dav /box davfs rw,user,noauto 0 0" >> /etc/fstab && \
-    echo "/box *(rw,async,no_subtree_check,no_root_squash,insecure,fsid=0)" >> /etc/exports
+    echo "/box *(rw,fsid=0,async,no_subtree_check,no_auth_nlm,insecure,all_squash,anonuid=0,anongid=0)" >> /etc/exports
 
 COPY nfsd.sh /usr/bin/nfsd.sh
 EXPOSE 111/udp 2049/tcp
